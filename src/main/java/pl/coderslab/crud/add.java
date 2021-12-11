@@ -23,6 +23,7 @@ public class add extends HttpServlet {
 
         UserDao dao = new UserDao();
         response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-9");
 
         String userName = request.getParameter("userName");
         String userMail = request.getParameter("userEmail");
@@ -31,7 +32,6 @@ public class add extends HttpServlet {
         if (userName != null & userMail != null & userPassword != null) {
             User user = new User(userName, userMail, userPassword);
             dao.create(user);
-            PrintWriter writer = response.getWriter();
 
         } else {
             System.out.println("Niekompletne dane!");

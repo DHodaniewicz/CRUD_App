@@ -15,27 +15,28 @@
                 class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>
     </div>
 
-    <h4>Dodaj uzytkownika: </h4>
+    <h4>Edytuj użytkownika: </h4>
 
 
     <!-- Content Row -->
 
     <div class="row">
 
-        <form action="/user/add" method="POST">
+        <form action="/user/edit" method="POST">
             <div class="form-group">
                 <label for="userName">Nazwa użytkownika</label>
-                <input type="text" class="form-control" id="userName" name="userName" placeholder="Nazwa Użytkownika" required>
+                <input type="text" class="form-control" id="userName" name="userName" value="${user.userName}" required>
             </div>
             <div class="form-group">
                 <label for="userEmail">Email address</label>
-                <input type="email" name="userEmail" class="form-control" id="userEmail" placeholder="name@example.com" aria-describedby="emailHelp" required >
+                <input type="email" name="userEmail" class="form-control" id="userEmail" value="${user.email}" aria-describedby="emailHelp" required >
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="userPassword">Password</label>
                 <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="Hasło" minlength="8" reqired>
             </div>
+            <input type="hidden" name="id" value="${user.id}"/>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
