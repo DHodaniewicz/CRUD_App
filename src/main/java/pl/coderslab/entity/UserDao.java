@@ -1,6 +1,6 @@
-package main.java.pl.coderslab.entity;
+package pl.coderslab.entity;
 
-import main.java.pl.coderslab.OOP_SQL_WORKSHOP.DBUtil;
+import pl.coderslab.utils.DBUtil;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
@@ -20,7 +20,7 @@ public class UserDao {
 
 
     public User create(User user) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getUserName());
@@ -41,7 +41,7 @@ public class UserDao {
     }
 
     public User read (int userId) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(GET_USER_QUERY);
             statement.setString(1, String.valueOf(userId));
             statement.executeQuery();
@@ -65,7 +65,7 @@ public class UserDao {
     }
 
     public void update(User user) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(UPDATE_USER_QUERY);
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getUserName());
@@ -79,7 +79,7 @@ public class UserDao {
     }
 
     public void deleteUser (int id) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(DELETE_USER_BY_ID_QUERY);
             statement.setString(1, String.valueOf(id));
             statement.executeUpdate();
@@ -96,7 +96,7 @@ public class UserDao {
 
     public User[] findAll() {
         User[] users = new User[0];
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(SELECT_ALL_USERS_QUERY);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -127,7 +127,7 @@ public class UserDao {
 
 
     public boolean checkDatabaseForUser (int id) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(SELECT_USER_BY_ID_QUERY);
             statement.setString(1, String.valueOf(id));
             ResultSet resultSet = statement.executeQuery();
