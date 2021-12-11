@@ -50,7 +50,7 @@
                         <td>${user.userName}</td>
                         <td>${user.email}</td>
                         <td>
-                        <a href="${pageContext.request.contextPath}/user/delete"> Usuń </a>
+                        <a href="${pageContext.request.contextPath}/user/delete?userId=${user.id}"> Usuń </a>
                         <a href="${pageContext.request.contextPath}/user/edit?userId=${user.id}"> Edytuj </a>
                         <a href="${pageContext.request.contextPath}/user/show?userId=${user.id}"> Pokaż </a>
                         </td>

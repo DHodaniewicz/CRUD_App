@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 public class edit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         User user = new User();
         try {
             int userId = Integer.parseInt(request.getParameter("userId"));
@@ -29,7 +29,7 @@ public class edit extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         UserDao dao = new UserDao();
         response.setContentType("text/html");
 

@@ -23,7 +23,7 @@ public class add extends HttpServlet {
 
         UserDao dao = new UserDao();
         response.setContentType("text/html");
-        request.setCharacterEncoding("UTF-9");
+        request.setCharacterEncoding("UTF-8");
 
         String userName = request.getParameter("userName");
         String userMail = request.getParameter("userEmail");
